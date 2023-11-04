@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ajax </title>
+    </head>
+    <body>
+        <h4>Ajax </h4>
+    <p id="demo"></p>
+    <button id="btn" onclick="loadData()">Click</button>
+        <script>
+
+
+       function loadData(){
+var xhttp=new XMLHttpRequest();
+//for checking server response
+xhttp.onreadystatechange=function (){
+    if(this.readyState==4 && this.status==200){
+    // document.getElementById("demo").innerHTML=this.responseText;
+    console.log(this.responseText);
+    }else if(this.readyState==4&& this.status==404){
+        document.getElementById("demo").innerHTML="file not found";
+    }
+};
+
+
+xhttp.open('GET',"http://jsonplaceholder.typicode.com/posts",true);
+xhttp.send();
+        };
+        </script>
+    </body>
+</html>

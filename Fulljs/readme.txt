@@ -1,0 +1,1 @@
+Here we load Data a ajax format texts

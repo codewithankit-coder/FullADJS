@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fetch</title>
+    </head>
+    <body>
+        <pre>
+        <form action="#" id="myform">
+            Title:<input type="text" id="titleText"><br>
+             Body:<input type="text" id="bodyText"><br>
+         UserName:<input type="text" id="userId"><br>
+                         <input type="submit" id="saveform"><br>
+        </form>
+        </pre>
+        <script>
+if(window.fetch){
+
+}else{
+    
+}
+
+
+
+            document.getElementById("saveform").addEventListener("click",(evn)=>{
+//ye page ko refresh nahi karega
+                evn.preventDefault();
+
+            //     var obj={
+            //     title:document.getElementById("titleText").value,
+            //     body:document.getElementById("bodyText").value,
+            //     userId:document.getElementById("userId").value,
+            // }
+// fetch()-Data insert,update and delete;
+fetch("http://jsonplaceholder.typicode.com/posts",{
+    //for inserting 
+    method:'POST',
+    //it change javascript objects to json format
+    body:new FormData(document.getElementById("myform")),
+    headers:{
+        'content-type':'application/x-www-form-urlencoded; charset=UTF-8',  
+    },
+}).then((response)=>response.json())
+.then((data)=>console.log(data));
+            })
+           
+
+        </script>
+    </body>
+</html>

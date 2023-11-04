@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            promise
+        </title>
+    </head>
+    <body>
+        
+        <script>
+            let complete =true;
+            const prop =new Promise((resolve,reject)=>{
+                if(complete){
+                    resolve("Iam  success");
+                }else{
+                    reject("Iam not successed");
+                }
+            })
+            console.log(prop);;
+
+
+
+            // ------------------------------------------------------------
+            //Second promise 
+            function Second(complete1){
+                return  new Promise ((resolve,reject)=>{
+                    if(complete1){
+                        resolve("Iam complete")
+                    }else{
+                        reject("Iam failed")
+                    }
+                })
+            }
+            console.log(Second(true));
+
+            //------------------------Third Promise ______
+
+            function projector(completepormise){
+                return new Promise(function(solve,unsolve){
+                    console.log("your data is fecthing,please wait");
+                    setTimeout(()=>{
+                        if(completepormise){
+                        solve("This is successful");
+
+                    }else{
+                        unsolve("This is unsuccess");
+                    }
+                    },2000)
+                    
+                });
+            }
+            let onfullfil=(result)=>{
+console.log(result);
+            }
+
+            let onRejection=(error)=>{
+                console.log(error)
+            }
+
+            // it will not call authomatically use here then() and catch()
+            // projector(true).then(onfullfil);
+            // projector(false).catch(onRejection);
+            projector(false).then(onfullfil).catch(onRejection);
+// ==========+++++++++++++++++++++++++++++++++++++++++++++++++++========
+// 𝐰𝐞 𝐜𝐚𝐧 𝐦𝐚𝐤𝐞 𝐭𝐡𝐢𝐬 𝐭𝐲𝐩𝐞 𝐚𝐥𝐬𝐨 
+// 𝐩𝐫𝐨𝐣𝐞𝐜𝐭𝐨𝐫(𝐟𝐚𝐥𝐬𝐞).𝐭𝐡𝐞𝐧((𝐫𝐞𝐬𝐮𝐥𝐭)=>{
+//     𝐜𝐨𝐧𝐬𝐨𝐥𝐞.𝐥𝐨𝐠(𝐫𝐞𝐬𝐮𝐥𝐭);
+// }).𝐜𝐚𝐭𝐜𝐡((𝐞𝐫𝐫𝐨𝐫)=>{
+//     𝐜𝐨𝐧𝐬𝐨𝐥𝐞.𝐥𝐨𝐠(𝐞𝐫𝐫𝐨𝐫);
+// })
+            //we add a json file/data on promises;
+         
+       //checking for 2 parameter in functions
+
+       function projector2(a,b){
+                return new Promise(function(solve,unsolve){
+                    console.log("your data is fecthing,please wait");
+                    var c=a+b;
+                    setTimeout(()=>{
+                        if(a,b){
+                        solve(`This is successful:${c}`);
+
+                    }else{
+                        unsolve("This is unsuccess");
+                    }
+                    },2000)
+                    
+                });
+            }
+            projector2(4,2).then((data)=>{
+                console.log(data);
+            }).catch((dataerror)=>{
+                console.log(dataerror);
+            });
+
+
+
+            //Fetching jquery data in the form of json;
+            
+            function projector12(){
+                return new Promise(function(solve,unsolve){
+                    console.log("your data is fecthing,please wait");
+                    
+                    setTimeout(()=>{
+                      $.get("http://jsonplaceholder.typicode.com/posts",function(data){
+                        console.log(data);
+                      }).fail(error=>{
+                        unsolve("failed to load json");
+                      }) 
+                    },2000)
+                    
+                });
+            }
+            projector12().then((data1)=>{
+                console.log(data1);
+            }).catch((dataerror)=>{
+                console.log(dataerror);
+            });
+
+
+
+
+        </script>
+        
+    </body>
+</html>

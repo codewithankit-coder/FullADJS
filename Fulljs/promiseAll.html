@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Promises.All();
+        </title>
+    </head>
+    <body>
+    <!-- promise.all() -->
+    <script>
+        let pro1=new Promise((resolve,reject)=>{
+setTimeout(()=>{
+console.log("The first promise is resolve")
+resolve(20);
+},1*1000)
+        });
+
+        let pro2=new Promise((resolve,reject)=>{
+setTimeout(()=>{
+console.log("The second promise is resolve")
+resolve(30);
+},2*1000)
+        });
+
+        let pro3=new Promise((resolve,reject)=>{
+setTimeout(()=>{
+console.log("The third promise is resolve")
+resolve(40);
+},3*1000)
+        });
+
+var total=0;
+        Promise.all([pro1,pro2,pro3]).then((result)=>{
+            for(var i in result){total +=result[i];}
+            console.log(`result ${result}`)
+            console.log(`Total:${total}`);
+        }).catch((error)=>{
+console.log(`Error: ${error}`)
+        })
+    </script>
+    </body>
+</html>
